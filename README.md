@@ -2,7 +2,6 @@
 
 An end-to-end data engineering pipeline built on Azure. It ingests the public Netflix titles dataset into a **medallion architecture (Bronze / Silver / Gold)** on ADLS Gen2, using Databricks Auto Loader, PySpark, Delta Lake, Unity Catalog and Delta Live Tables.
 
-> Built while following the [Netflix Azure Data Engineering Project](https://github.com/anshlambagit/Netflix_Azure_Data_Engineering_Project) tutorial by Ansh Lamba. The dataset and the original notebook archive come from that repository. The Azure environment, Unity Catalog setup and troubleshooting below are my own.
 
 ## Architecture
 
