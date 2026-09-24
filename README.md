@@ -37,7 +37,6 @@ Everything lives in the resource group `IC-NetflixProject` (East US).
 ```
 data/         Source CSV files (titles, cast, category, countries, directors)
 notebooks/    Databricks notebooks exported as .py (source format)
-original/     Original .dbc archive from the tutorial (import it directly into Databricks)
 ```
 
 ## Notebooks
@@ -64,16 +63,6 @@ Storage paths in the notebooks point to `abfss://<container>@netflixprojectdlism
 
 Note: the `.dbc` in `original/` is the untouched tutorial archive and still references the tutorial author's storage account name. The `.py` notebooks in `notebooks/` are already updated to `netflixprojectdlism`.
 
-## Challenges & solutions
-
-**"Cannot create a second metastore in the same region."**
-Unity Catalog allows one metastore per region per account. Creating the workspace in East US had already created `metastore_azure_eastus` automatically. Solution: reuse the existing metastore instead of creating a new one.
-
-**`storage_root does not specify a URI scheme`.**
-The ADLS Gen2 path for the metastore storage must be a full URI. Wrong: `metastore@netflixprojectdlism.dfs.core.windows.net/`. Right: `abfss://metastore@netflixprojectdlism.dfs.core.windows.net/`.
-
-**`Parent external location for your path does not exist`.**
-Unity Catalog can only use a storage path that is registered as an external location. Solution: create a storage credential from the access connector `access_netflix`, register an external location for the container, then set the storage path.
 
 ## Tech stack
 
